@@ -66,6 +66,7 @@ func (c *ClientCmd) init() {
 	c.rootCmd.AddCommand(newSendCommand())
 	c.rootCmd.AddCommand(newRushCommand())
 	c.rootCmd.AddCommand(newRushIPCCommand())
+	c.rootCmd.AddCommand(newRushIPCCommand1())
 	//c.rootCmd.AddCommand
 }
 
