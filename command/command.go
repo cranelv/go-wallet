@@ -67,6 +67,9 @@ func (c *ClientCmd) init() {
 	c.rootCmd.AddCommand(newRushCommand())
 	c.rootCmd.AddCommand(newRushIPCCommand())
 	c.rootCmd.AddCommand(newRushIPCCommand1())
+	c.rootCmd.AddCommand(newTupleCommand())
+	c.rootCmd.AddCommand(newImportCommand())
+	c.rootCmd.AddCommand(newBalanceCommand())
 	//c.rootCmd.AddCommand
 }
 

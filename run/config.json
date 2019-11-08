@@ -1,0 +1,6 @@
+{
+  "rpc":"http://114.67.87.248:8341",
+  "sendnum":3,
+  "keystorepath":"./keystore",
+  "chainid":1
+}

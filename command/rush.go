@@ -110,7 +110,7 @@ func rushCommand1(args []string,aiMan *AIMan.AIMan,cap int) error {
 	}
 	fmt.Println(len(raws))
 	for i:=0;i<size;i++{
-		aiMan.Man.BatchSendRawTransaction(raws[i*cap:(i+1)*cap])
+//		aiMan.Man.BatchSendRawTransaction(raws[i*cap:(i+1)*cap])
 	fmt.Println(i*cap,(i+1)*cap)
 		time.Sleep(time.Millisecond)
 	}
@@ -131,6 +131,6 @@ func TxPackage(nonce uint64,from string,manager *Accounts.KeystoreManager,aiMan 
 		raws[i] = raw
 		nonce++
 	}
-	aiMan.Man.BatchSendRawTransaction(raws)
+//	aiMan.Man.BatchSendRawTransaction(raws)
 	return nil
 }

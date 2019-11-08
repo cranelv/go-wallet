@@ -43,16 +43,18 @@ func normalSend(cmd *cobra.Command, args []string) error {
 	to := args[1]
 	value := args[2]
 	amount,ok := ParseBig256(value)
+	amount.Mul(amount,big.NewInt(1e18))
 	if !ok {
 		return errors.New("amount value set error")
 	}
-	aiMan := AIMan.NewAIMan(providers.NewHTTPProvider("api85.matrix.io", 100, false))
+	aiMan := AIMan.NewAIMan(providers.NewHTTPProvider(walletConfig.RPC, 100, true))
 	nonce,err := aiMan.Man.GetTransactionCount(from,"latest")
 	if err != nil {
 		return err
 	}
-	keystorePath := args[3]
-	manager := Accounts.NewKeystoreManager(keystorePath, 1)
+	keystorePath := "./keystore"
+	manager := Accounts.NewKeystoreManager(keystorePath, walletConfig.ChainID)
+	manager.Unlock(from,"R7c5Rsrj1Q7r4d5fp")
 	trans := transactions.NewTransaction(nonce.Uint64(),to,amount,200000,big.NewInt(18e9),
 		nil,0,0,0)
 	raw,err := manager.SignTx(trans,from)
